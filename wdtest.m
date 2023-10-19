@@ -1,0 +1,30 @@
+FE=[80000 80000 80000 80000 80000 80000 80000 80000 120000 120000 120000 120000];
+alg = ["OptAll","OptMPNDS", "OptMPNDS2","OptMPNDS3"];
+problems = ["MPDMP1", "MPDMP2", "MPDMP3", "MPDMP4", "MPDMP5", "MPDMP6", "MPDMP7", "MPDMP8","MPDMP9","MPDMP10","MPDMP11","MPDMP12"];
+testans = zeros(numel(alg),3);
+for i = 1:numel(problems)
+    path0 = ['Data\0\'  char(alg(end)) '\2\' char(problems(i)) '_' char(alg(end)) '(' num2str(FE(i)) ').mat'];
+    load(path0);
+    Score0 =  Score(:,1);
+    Score1 = [];
+    for j = 1:numel(alg)-1
+        path1 = ['Data\0\'  char(alg(j)) '\2\' char(problems(i)) '_' char(alg(j)) '(' num2str(FE(i)) ').mat'];
+        load(path1);
+        Score1 =  [Score1 Score(:,1)];
+    end
+        [~,~,stats] = friedman([Score1 Score0],1,'off');
+        c     = multcompare(stats,'Display','off');
+        diff1 = c(any(c==numel(alg),2),end) < 0.05;
+    for j = 1:numel(alg)-1
+        if diff1(j)
+            if mean(Score0)<mean(Score1(:,j))
+                testans(j,1)=testans(j,1)+1;
+            else
+                testans(j,3)=testans(j,3)+1;
+            end
+        else
+            testans(j,2)=testans(j,2)+1;
+        end
+    end
+end
+testans

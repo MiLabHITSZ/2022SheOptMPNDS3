@@ -5,9 +5,11 @@ function runtest()
     %% initialize the parameters
     alg = ["OptAll","OptMPNDS", "OptMPNDS2","OptMPNDS3"];
     problems = ["MPDMP1", "MPDMP2", "MPDMP3", "MPDMP4", "MPDMP5", "MPDMP6", "MPDMP7", "MPDMP8"];
-    % problems = ["MPDMP3"];
     population = 200;
-    evaluation = 80000;
+    evaluation = 120000;
+
+    %problems = ["MPDMP9", "MPDMP10", "MPDMP11", "MPDMP12"];
+    %evaluation = 80000;
     dim = 2;
     FileOrder = 0;
 
@@ -28,7 +30,7 @@ function runtest()
                 for j = 0:30:29
                     spmd(30)
                     disp(labindex);
-                    s = RandStream.create('mrg32k3a', 'NumStreams', 100, 'StreamIndices', j + labindex);
+                    s = RandStream.create('mrg32k3a', 'NumStreams', 30, 'StreamIndices', labindex);
                     RandStream.setGlobalStream(s);
                     result = main('-algorithm', test_case{1}, ...
                         '-problem', test_case{2}, '-N', test_case{3}, ...

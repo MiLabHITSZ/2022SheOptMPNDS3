@@ -4,7 +4,7 @@ function runtest2()
     addpath(genpath(fileparts(mfilename('fullpath')))); %add path
     %% initialize the parameters
     alg = ["OptAll","OptMPNDS", "OptMPNDS2","OptMPNDS21", "OptMPNDS4"];
-    alg = ["OptMPNDS4"];
+    %alg = ["OptMPNDS4"];
     problems = ["MPDMP1", "MPDMP2", "MPDMP3", "MPDMP4", "MPDMP5", "MPDMP6", "MPDMP7", "MPDMP8"];
     % problems = ["MPDMP3"];
     population = 200;

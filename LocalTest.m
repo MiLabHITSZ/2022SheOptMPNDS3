@@ -5,7 +5,7 @@ function LocalTest()
     dim = 2;
     evaluation = 10000 * dim * 2;
     problem = @MPDMP51;
-    alg = {@OptAll, @HybridOptMPNDS, @HybridOptMPNDS2, @OptPF};
+    alg = {@OneDM};
     test_case = {
 
             @OptPS, problem, 200, 1, 1, evaluation, dim;
