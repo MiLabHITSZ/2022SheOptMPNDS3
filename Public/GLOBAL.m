@@ -69,8 +69,8 @@ classdef GLOBAL < handle
     end
 
     properties (SetAccess = private)
-        algorithm = @OMPNDS; % Algorithm function
-        problem = @FMOP1; % Problem function
+        algorithm = @OptMPNDS; % Algorithm function
+        problem = @MPDMP1; % Problem function
         gen; % Current generation
         maxgen; % Maximum generation
         run = 1; % Run number
@@ -180,10 +180,9 @@ classdef GLOBAL < handle
                 Front = NDSort(tmp', size(objs, 1));
                 NonDominated = (Front == 1);
 
-                %                 obj.problem.Draw(Population.decs, func2str(obj.algorithm));
                 Population = obj.result{end}(Feasible(NonDominated));
                 obj.result{end} = Population;
-                % obj.problem.Draw(Population.decs, Front(Front == 1), func2str(obj.algorithm));
+                obj.problem.Draw(Population.decs, Front(Front == 1), func2str(obj.algorithm));
 
                 Metrics = obj.problem.Metric;
                 Score = cellfun(@(S)GLOBAL.Metric(S, Population, obj.PF, obj.DM), Metrics, 'UniformOutput', false);

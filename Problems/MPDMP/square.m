@@ -43,8 +43,9 @@ classdef square
             p = [obj.x, obj.y];
         end
         %% draw the ploygon
-        function Draw(obj)
+        function f = Draw(obj)
             b = [0 0 1 0; 0 0 0 1; 0 0 0 0; 0 0 0 0];
+            f = figure();
             hold on;
 %             for i = 1
 %                 temp = [obj.PointA(i, :); obj.PointB(i, :); ...
@@ -61,7 +62,12 @@ classdef square
                 obj.PointC(:, end), 'g+');
             plot(obj.PointD(:, 1), ...
                 obj.PointD(:, end), 'm*');
-            plot(obj.x, obj.y, 'mp','MarkerSize',20);
+
+            plot([obj.PointA(1), obj.PointC(1)], [obj.PointA(2), obj.PointC(2)]);
+            plot([obj.PointB(1), obj.PointD(1)], [obj.PointB(2), obj.PointD(2)]);
+
+            hold off;
+            % plot(obj.x, obj.y, 'mp','MarkerSize',20);
         end
 
     end

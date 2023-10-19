@@ -23,9 +23,9 @@ classdef MPDMP1 < MPDMP
             xlabel('x_1');
             ylabel('x_2');
             axis([30 70 30 70]);
-            %             title(caption);
+            title(caption);
 
-            title(caption + " " + num2str(fig.Number) + "run");
+            % title(caption + " " + num2str(fig.Number) + "run");
             %
             % frame = getframe(fig);
             % img = frame2im(frame);

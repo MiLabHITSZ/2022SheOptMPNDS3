@@ -56,23 +56,23 @@ classdef trapezoid1
         end
 
         %% draw the ploygon
-        function Draw(obj)
+        function fig = Draw(obj)
             b = [0 0 0 1; 1 0 0 0; 0 1 0 0; 0 0 1 0];
-
-            for i = 1
-                temp = [obj.PointA(i, :); obj.PointB(i, :); ...
-                        obj.PointC(i, :); obj.PointD(i, :); ];
-                gplot(b, temp, 'k');
-                hold on;
-            end
-
+            fig = figure();
+            % for i = 1
+            %     temp = [obj.PointA(i, :); obj.PointB(i, :); ...
+            %             obj.PointC(i, :); obj.PointD(i, :); ];
+            %     gplot(b, temp, 'k');
+            %     hold on;
+            % end
+            hold on;
             plot(obj.PointA(:, 1), obj.PointA(:, end), 'ro');
             plot(obj.PointB(:, 1), obj.PointB(:, end), 'bx');
             plot(obj.PointC(:, 1), obj.PointC(:, end), 'g+');
             plot(obj.PointD(:, 1), obj.PointD(:, end), 'm*');
             % best position
             plot(obj.x, obj.y, 'r+');
-            plot(obj.PointA, obj.PointC);
+            plot([obj.PointA(1), obj.PointC(1)], [obj.PointA(2), obj.PointC(2)]);
             plot([30,50], [30, 70]);
         end
 

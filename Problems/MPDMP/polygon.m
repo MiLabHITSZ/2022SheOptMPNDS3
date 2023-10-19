@@ -42,7 +42,7 @@ classdef polygon
             p = obj.EuclideanDistance(p);
         end
 
-        function Draw(obj)
+        function fig = Draw(obj)
             %Draw - draw the map
             %
             % Syntax: Draw(obj)

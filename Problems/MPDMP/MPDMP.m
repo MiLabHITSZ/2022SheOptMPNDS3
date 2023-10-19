@@ -49,8 +49,8 @@ classdef MPDMP < PROBLEM
             Opt = [200, 200, 200, 200];
         end
 
-        function Draw(obj, PopDec, FrontNo, caption)
-            obj.Map.Draw();
+        function fig = Draw(obj, PopDec, FrontNo, caption)
+            fig = obj.Map.Draw();
             gscatter(PopDec(:, 1), PopDec(:, end), FrontNo');
             xlabel('x_1');
             ylabel('x_2');
