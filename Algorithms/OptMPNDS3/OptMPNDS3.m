@@ -105,7 +105,7 @@ function OptMPNDS3(Global)
             mu_F = (1 - c) * mu_F + c * mean_Lehmer(S_F);
         end
 
-        % Global.problem.Draw(Population.decs, FrontNo, func2str(Global.algorithm));
+        Global.problem.Draw(Population.decs, FrontNo, func2str(Global.algorithm));
     end
 
 end
